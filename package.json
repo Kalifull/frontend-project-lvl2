@@ -1,0 +1,47 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "description": "[![Actions Status](https://github.com/Kalifull/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/Kalifull/frontend-project-lvl2/actions)",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "gendiff": "bin/gendiff.js"
+  },
+  "scripts": {
+    "test": "npx jest",
+    "eslint": "eslint",
+    "prettier": "prettier"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {}
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kalifull/frontend-project-lvl2.git"
+  },
+  "author": "Alexey Vorona",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kalifull/frontend-project-lvl2/issues"
+  },
+  "homepage": "https://github.com/Kalifull/frontend-project-lvl2#readme",
+  "dependencies": {
+    "commander": "^9.2.0",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@jest/globals": "^28.1.0",
+    "eslint": "^8.15.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jest": "^26.2.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^28.1.0",
+    "jest-cli": "^28.1.0",
+    "npm-check-updates": "^13.0.1",
+    "prettier": "2.6.2"
+  }
+}

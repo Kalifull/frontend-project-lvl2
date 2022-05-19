@@ -1,0 +1,41 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true,
+    "jest/globals": true
+  },
+  "root": true,
+  "extends": [
+    "eslint:recommended",
+    "plugin:jest/recommended",
+    "plugin:import/recommended",
+    "airbnb-base",
+    "prettier"
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["import", "unicorn", "jest", "prettier"],
+  "rules": {
+    "no-use-before-define": "error",
+    "prefer-const": "error",
+    "no-multiple-empty-lines": "error",
+    "space-in-parens": "error",
+    "no-multi-spaces": "error",
+    "no-var": "error",
+    "semi": "error",
+    "indent": ["error", 2],
+    "no-console": "off",
+    "linebreak-style": 0,
+    "no-param-reassign": 0,
+    "prefer-destructuring": 0,
+    "no-restricted-syntax": 0,
+    "no-continue": "off",
+    "prettier/prettier": ["error"],
+    "max-len": ["error", { "comments": 80, "code": 80 }],
+    "import/extensions": ["error", "ignorePackages", { "js": "always" }],
+    "no-underscore-dangle": [2, { "allow": ["__filename", "__dirname"] }]
+  }
+}
