@@ -10,6 +10,7 @@
     "eslint:recommended",
     "plugin:jest/recommended",
     "plugin:import/recommended",
+    "plugin:prettier/recommended",
     "airbnb-base",
     "prettier"
   ],
@@ -17,7 +18,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["import", "unicorn", "jest", "prettier"],
+  "plugins": ["import", "jest", "prettier"],
   "rules": {
     "no-use-before-define": "error",
     "prefer-const": "error",
@@ -33,8 +34,11 @@
     "prefer-destructuring": 0,
     "no-restricted-syntax": 0,
     "no-continue": "off",
-    "prettier/prettier": ["error"],
-    "max-len": ["error", { "comments": 80, "code": 80 }],
+    "prettier/prettier": [
+      "error",
+      { "singleQuote": true, "printWidth": 120, "endOfLine": "auto" }
+    ],
+    "max-len": ["error", { "comments": 120, "code": 120 }],
     "import/extensions": ["error", "ignorePackages", { "js": "always" }],
     "no-underscore-dangle": [2, { "allow": ["__filename", "__dirname"] }]
   }
