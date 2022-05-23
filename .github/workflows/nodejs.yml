@@ -1,5 +1,5 @@
 # Name of workflow
-name: Node CI
+name: linter
 
 # Trigger the workflow on push or pull request
 on:
@@ -8,7 +8,7 @@ on:
 
 env:
   CI: true
-  CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+  CC_TEST_REPORTER_ID: ${{ secrets.MY_PROJECT }}
 
 jobs:
   build:
@@ -23,6 +23,7 @@ jobs:
 
     steps:
         # Check-out repository under GitHub workspace
+      - name: Check out repository
       - uses: actions/checkout@v3
         # Step's name
       - name: Use Node.js ${{ matrix.node-version }}
