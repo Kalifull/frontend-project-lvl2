@@ -30,7 +30,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - name: Install dependencies
-        run: make install
+        run: make install-deps
 
       - name: Run linter  
         run: make lint
