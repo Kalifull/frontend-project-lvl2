@@ -19,7 +19,7 @@ const compareFileContent = (obj1, obj2, replacer = ' ', spaceCount = 2) => {
       const value1 = obj1[key];
       const value2 = obj2[key];
       if (!key1) {
-        return [`+ ${key} ${value2}`];
+        return [`+ ${key}: ${value2}`];
       }
       if (!key2) {
         return [`- ${key}: ${value1}`];
