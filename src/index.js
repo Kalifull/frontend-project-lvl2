@@ -1,12 +1,14 @@
 import fs from 'fs';
 import path from 'path';
 import _ from 'lodash';
+import parse from './parsers.js';
 
 const getPathFile = (filepath) => path.resolve(process.cwd(), filepath);
 
 const getFileContent = (filepath) => {
   const fileContent = fs.readFileSync(getPathFile(filepath), 'utf8');
-  return JSON.parse(fileContent);
+  const extension = path.extname(filepath);
+  return parse(fileContent, extension);
 };
 
 const compareFileContent = (obj1, obj2, replacer = ' ', spaceCount = 2) => {
