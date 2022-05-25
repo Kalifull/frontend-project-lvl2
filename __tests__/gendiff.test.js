@@ -11,22 +11,25 @@ const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', 
 
 const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf8');
 
-test("extension '.json'", () => {
-  const plainData = readFile('expected-json-plain.txt');
-  const expected = plainData.trim();
+test("check extension '.json'", () => {
+  const data = readFile('expected-json.txt');
+  const expected = data.trim();
   const actual = genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'));
+
   expect(actual).toEqual(expected);
 });
 
-test("extension '.yml' && '.yaml'", () => {
-  const plainData = readFile('expected-yml-plain.txt');
-  const expected = plainData.trim();
+test("check extension '.yml' && '.yaml'", () => {
+  const data = readFile('expected-yml.txt');
+  const expected = data.trim();
   const actual = genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yaml'));
+
   expect(actual).toEqual(expected);
 });
 
-test('check parse wrong extension', () => {
+test('check wrong extension', () => {
   const error = new Error("Invalid file extension type: '.txt'! Try supported file formats.");
+
   expect(() => {
     genDiff(getFixturePath('wrong-ext-file1.txt'), getFixturePath('wrong-ext-file2.txt'));
   }).toThrow(error);
