@@ -11,15 +11,15 @@ const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', 
 
 const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf8');
 
-test("check extension '.json'", () => {
-  const data = readFile('expected-json.txt');
+test('check correct extension', () => {
+  const data = readFile('expected-stylish.txt');
   const expected = data.trim();
   const actual = genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'stylish');
 
   expect(actual).toEqual(expected);
 });
 
-test("check extension '.yml' && '.yaml'", () => {
+test('check stylish format', () => {
   const data = readFile('expected-yml.txt');
   const expected = data.trim();
   const actual = genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yaml'), 'stylish');
@@ -27,10 +27,18 @@ test("check extension '.yml' && '.yaml'", () => {
   expect(actual).toEqual(expected);
 });
 
-test('check plain', () => {
+test('check plain format', () => {
   const data = readFile('expected-plain.txt');
   const expected = data.trim();
   const actual = genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'plain');
+
+  expect(actual).toEqual(expected);
+});
+
+test('check json format', () => {
+  const data = readFile('expected-json.txt');
+  const expected = data.trim();
+  const actual = genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'json');
 
   expect(actual).toEqual(expected);
 });
