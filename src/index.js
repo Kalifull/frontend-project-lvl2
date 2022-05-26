@@ -1,8 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 import parse from './parsers.js';
-import makeStylish from './stylish.js';
 import buildDiffTree from './buildDiffTree.js';
+import formatOutput from './formatters/index.js';
 
 const getPathFile = (filepath) => path.resolve(process.cwd(), filepath);
 
@@ -17,9 +17,8 @@ const getFileContent = (filepath) => {
 const genDiff = (filepath1, filepath2, format = 'stylish') => {
   const firstFileContent = getFileContent(filepath1);
   const secondFileContent = getFileContent(filepath2);
-
   const diffBetweenFiles = buildDiffTree(firstFileContent, secondFileContent);
-  const formattedDiff = makeStylish(diffBetweenFiles, format);
+  const formattedDiff = formatOutput(diffBetweenFiles, format);
 
   return formattedDiff;
 };
