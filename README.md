@@ -24,7 +24,7 @@ $ make install-deps
 $ make test
 ```
 ## How to use:
-You can use it as a script in terminal or as a library in your JavaScript project. You can format difference in three styles: stylish (default), plain and json. You can choose replacer: '' (default) or custom replacer for json format.
+You can use it as a script in terminal or as a library in your JavaScript project. You can format difference in three styles: stylish (default), plain and json. You can choose replacer: "" (default) or custom replacer for json format.
 ```shell
 $ gendiff -h
 Usage: gendiff [options] <filepath1> <filepath2>
