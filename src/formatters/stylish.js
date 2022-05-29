@@ -19,15 +19,22 @@ const makeStylish = (diff) => {
   const iter = (tree, depth) => tree.map((node) => {
     const makeLine = (value, sign) => `${getIndent(depth)}${sign} ${node.name}: ${stringify(value, depth)}`;
 
+    const sign = {
+      added: '+',
+      deleted: '-',
+      unchanged: ' ',
+    };
+
     switch (node.type) {
       case 'added':
-        return makeLine(node.value, '+');
+        return makeLine(node.value, sign.added);
       case 'deleted':
-        return makeLine(node.value, '-');
+        return makeLine(node.value, sign.deleted);
       case 'unchanged':
-        return makeLine(node.value, ' ');
+        return makeLine(node.value, sign.unchanged);
       case 'changed':
-        return [`${makeLine(node.firstValue, '-')}`, `${makeLine(node.secondValue, '+')}`].join('\n');
+        return [`${makeLine(node.firstValue, sign.deleted)}`,
+          `${makeLine(node.secondValue, sign.added)}`].join('\n');
       case 'nested':
         return `${getIndent(depth)}  ${node.name}: ${[
           '{',
