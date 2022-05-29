@@ -11,6 +11,6 @@ export default (data, format = 'stylish') => {
     case 'json':
       return makeJson(data);
     default:
-      throw new Error(`Invalid file format type: '${format}'! Try supported file formats.`);
+      throw new Error(`Invalid file format type: '.${format}'! Try supported file formats.`);
   }
 };

@@ -19,10 +19,7 @@ const buildDiffTree = (data1, data2) => {
     }
     if (!_.isEqual(value1, value2)) {
       return {
-        name: key,
-        firstValue: value1,
-        secondValue: value2,
-        type: 'changed',
+        name: key, firstValue: value1, secondValue: value2, type: 'changed',
       };
     }
 

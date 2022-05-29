@@ -1,13 +1,11 @@
-import fs from 'fs';
 import path from 'path';
 import parse from './parsers.js';
+import readFile from './readFile.js';
 import buildDiffTree from './buildDiffTree.js';
 import formatOutput from './formatters/index.js';
 
-const getPathFile = (filepath) => path.resolve(process.cwd(), filepath);
-
 const getFileContent = (filepath) => {
-  const fileContent = fs.readFileSync(getPathFile(filepath), 'utf8');
+  const fileContent = readFile(filepath);
   const fileExtension = path.extname(filepath);
   const fileDataParse = parse(fileContent, fileExtension);
 
