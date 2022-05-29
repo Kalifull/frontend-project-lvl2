@@ -38,7 +38,7 @@ describe('Negative cases', () => {
     const error = new Error("Invalid file extension type: '.txt'! Try supported file formats.");
 
     expect(() => {
-      genDiff(getFixturePath('wrong-ext-file1.txt'), getFixturePath('wrong-ext-file2.txt'), 'txt');
+      genDiff(getFixturePath('wrong-ext-file1.txt'), getFixturePath('wrong-ext-file2.txt'));
     }).toThrow(error);
   });
 
