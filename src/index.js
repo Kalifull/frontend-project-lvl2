@@ -12,11 +12,12 @@ const getFileContent = (filepath) => {
   return fileDataParse;
 };
 
-const genDiff = (filepath1, filepath2, format = 'stylish') => {
+const genDiff = (filepath1, filepath2, format = 'stylish', option = {}) => {
+  const { replacer } = option;
   const firstFileContent = getFileContent(filepath1);
   const secondFileContent = getFileContent(filepath2);
   const diffBetweenFiles = buildDiffTree(firstFileContent, secondFileContent);
-  const formattedDiff = formatOutput(diffBetweenFiles, format);
+  const formattedDiff = formatOutput(diffBetweenFiles, format, replacer);
 
   return formattedDiff;
 };
