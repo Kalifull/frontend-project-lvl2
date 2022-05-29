@@ -10,7 +10,7 @@ export default () => {
     .addOption(
       new Option('-f, --format <type>', 'output format')
         .default('stylish')
-        .choices(['plain', 'json']),
+        .choices(['stylish', 'plain', 'json']),
     )
     .arguments('<filepath1> <filepath2>')
     .action((filepath1, filepath2) => {
