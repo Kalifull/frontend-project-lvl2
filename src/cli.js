@@ -12,7 +12,7 @@ export default () => {
         .default('stylish')
         .choices(['stylish', 'plain', 'json']),
     )
-    .option('-r, --replacer <char>', 'output replacer for format json', '')
+    .option('-r, --replacer <char>', 'output replacer', '    ')
     .arguments('<filepath1> <filepath2>')
     .action((filepath1, filepath2, replacer) => {
       const diff = genDiff(filepath1, filepath2, program.opts().format, replacer);

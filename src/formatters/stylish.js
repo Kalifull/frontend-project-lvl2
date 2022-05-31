@@ -1,23 +1,23 @@
 import _ from 'lodash';
 
-const getIndent = (depth, replacer = ' ', firstIndent = 2, spaceCount = 4) => (
-  replacer.repeat(spaceCount * depth).slice(firstIndent));
-
-const stringify = (data, depth) => {
+const stringify = (data, depth, replacer) => {
   if (!_.isObject(data)) {
     return `${data}`;
   }
 
-  const lines = Object.entries(data).map(
-    ([key, value]) => `${getIndent(depth + 1)}  ${key}: ${stringify(value, depth + 1)}`,
-  );
+  const IndentForKey = replacer.repeat(depth + 1);
+  const IndentForBracket = replacer.repeat(depth);
+  const lines = Object.entries(data)
+    .map(([key, value]) => `${IndentForKey}${key}: ${stringify(value, depth + 1, replacer)}`);
 
-  return ['{', ...lines, `${getIndent(depth)}  }`].join('\n');
+  return ['{', ...lines, `${IndentForBracket}}`].join('\n');
 };
 
-const makeStylish = (diff) => {
+const makeStylish = (diff, replacer = '    ') => {
   const iter = (tree, depth) => tree.map((node) => {
-    const makeLine = (value, sign) => `${getIndent(depth)}${sign} ${node.name}: ${stringify(value, depth)}`;
+    const indent = replacer.repeat(depth);
+    const indentForLine = indent.slice(2);
+    const makeLine = (value, sign) => `${indentForLine}${sign} ${node.name}: ${stringify(value, depth, replacer)}`;
 
     const sign = {
       added: '+',
@@ -36,11 +36,7 @@ const makeStylish = (diff) => {
         return [`${makeLine(node.firstValue, sign.deleted)}`,
           `${makeLine(node.secondValue, sign.added)}`].join('\n');
       case 'nested':
-        return `${getIndent(depth)}  ${node.name}: ${[
-          '{',
-          ...iter(node.children, depth + 1),
-          `${getIndent(depth)}  }`,
-        ].join('\n')}`;
+        return `${indent}${node.name}: ${['{', ...iter(node.children, depth + 1), `${indent}}`].join('\n')}`;
       default:
         throw new Error(`Type: ${node.type} is undefined`);
     }

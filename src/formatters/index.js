@@ -5,7 +5,7 @@ import makeStylish from './stylish.js';
 export default (data, format, replacer) => {
   switch (format) {
     case 'stylish':
-      return makeStylish(data);
+      return makeStylish(data, replacer);
     case 'plain':
       return makePlain(data);
     case 'json':
