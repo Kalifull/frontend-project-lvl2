@@ -24,7 +24,7 @@ $ make install-deps
 $ make test
 ```
 ## How to use:
-You can use it as a script in terminal or as a library in your JavaScript project. You can format difference in three styles: stylish (default), plain and json. You can choose replacer: "" (default) or custom replacer for json format.
+You can use it as a script in terminal or as a library in your JavaScript project. You can format difference in three styles: stylish (default), plain and json. You can choose replacer: (default: "    ") or custom replacer for json and stylish format.
 ```shell
 $ gendiff -h
 Usage: gendiff [options] <filepath1> <filepath2>
@@ -34,7 +34,7 @@ Compares two configuration files and shows a difference.
 Options:
   -V, --version          output the version number
   -f, --format <type>    output format (choices: "stylish", "plain", "json", default: "stylish")
-  -r, --replacer <char>  output replacer for format json (default: "")
+  -r, --replacer <char>  output replacer (default: "    ")
   -h, --help             display help for command
 ```
 ## Use in your project:
@@ -50,3 +50,5 @@ console.log(diff);
 [![asciicast](https://asciinema.org/a/FFIZd5NxAkB0Y535W3ism7bEv.svg)](https://asciinema.org/a/FFIZd5NxAkB0Y535W3ism7bEv)
 ### Compare files in json format with custom replacer:
 [![asciicast](https://asciinema.org/a/utrE5uudDqMd22HRERUHj10KZ.svg)](https://asciinema.org/a/utrE5uudDqMd22HRERUHj10KZ)
+### Compare files in stylish format with custom replacer:
+[![asciicast](https://asciinema.org/a/nqtMIs5x9qsGATAOpeAnH7rvF.svg)](https://asciinema.org/a/nqtMIs5x9qsGATAOpeAnH7rvF)
