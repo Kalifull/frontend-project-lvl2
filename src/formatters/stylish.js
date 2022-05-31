@@ -5,12 +5,12 @@ const stringify = (data, depth, replacer) => {
     return `${data}`;
   }
 
-  const IndentForKey = replacer.repeat(depth + 1);
-  const IndentForBracket = replacer.repeat(depth);
+  const indentForKey = replacer.repeat(depth + 1);
+  const indentForBracket = replacer.repeat(depth);
   const lines = Object.entries(data)
-    .map(([key, value]) => `${IndentForKey}${key}: ${stringify(value, depth + 1, replacer)}`);
+    .map(([key, value]) => `${indentForKey}${key}: ${stringify(value, depth + 1, replacer)}`);
 
-  return ['{', ...lines, `${IndentForBracket}}`].join('\n');
+  return ['{', ...lines, `${indentForBracket}}`].join('\n');
 };
 
 const makeStylish = (diff, replacer = '    ') => {
