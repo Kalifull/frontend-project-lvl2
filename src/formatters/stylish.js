@@ -13,17 +13,18 @@ const stringify = (data, depth, replacer) => {
   return ['{', ...lines, `${indentForBracket}}`].join('\n');
 };
 
+const sign = {
+  added: '+',
+  deleted: '-',
+  unchanged: ' ',
+};
+
 const makeStylish = (diff, replacer = '    ') => {
   const iter = (tree, depth) => tree.map((node) => {
     const indent = replacer.repeat(depth);
-    const indentForLine = indent.slice(2);
-    const makeLine = (value, sign) => `${indentForLine}${sign} ${node.name}: ${stringify(value, depth, replacer)}`;
+    const indentForSign = indent.slice(2);
 
-    const sign = {
-      added: '+',
-      deleted: '-',
-      unchanged: ' ',
-    };
+    const makeLine = (value, mark) => `${indentForSign}${mark} ${node.name}: ${stringify(value, depth, replacer)}`;
 
     switch (node.type) {
       case 'added':
